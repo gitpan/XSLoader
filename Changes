@@ -1,0 +1,14 @@
+0.03_01  Mon Dec  6 19:28:57 EST 2004
+    - Incrementing version as several versions called themselves 0.03.
+
+0.03  *UNRELEASED*
+    - Clean up tests for core [bleadperl@20945, 20952, 20961]
+    - Make XSLoader update @DynaLoader::dl_shared_objects [bleadperl@22816]
+    - Minor doc style nits [bleadperl@21060]
+
+0.02  Fri Aug 29 21:59:33 PDT 2003
+    * Adapted from bleadperl@20940
+    * Added basic tests
+    * Backported to 5.004_05
+    - load() now gives a proper error when given no arguments.
+    - Removed copy of DynaLoader's Tolkien quote
