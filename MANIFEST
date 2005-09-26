@@ -1,6 +1,7 @@
-Changes
-Makefile.PL
 MANIFEST
-META.yml			Module meta-data (added by MakeMaker)
-t/XSLoader.t
+META.yml
+Makefile.PL
+README
+Changes
 XSLoader_pm.PL
+t/XSLoader.t

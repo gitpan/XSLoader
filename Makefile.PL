@@ -6,6 +6,7 @@
 # Alternatively, you can say the hell with this and use h2xs.
 
 use ExtUtils::MakeMaker;
+eval 'use ExtUtils::MakeMaker::Coverage';
 
 $PACKAGE = 'XSLoader';
 ($PACKAGE_FILE = $PACKAGE) =~ s|::|/|g;
@@ -29,12 +30,15 @@ mkdir 'lib', 0755;
 WriteMakefile(
     NAME            => $PACKAGE,
     VERSION_FROM    => 'XSLoader_pm.PL',
+    ABSTRACT_FROM   => 'XSLoader_pm.PL',
     INSTALLDIRS     => 'perl',
     PL_FILES        => { 'XSLoader_pm.PL'  => 'lib/XSLoader.pm' },
     PM              => { 'lib/XSLoader.pm' => '$(INST_LIBDIR)/XSLoader.pm' },
     PREREQ_PM       => {
-                        Test => 0,
-                       },
+        'Test' => 0,
+    },
+    dist            => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    clean           => { FILES => 'XSLoader-*' },
 );
 
 

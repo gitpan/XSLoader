@@ -1,3 +1,11 @@
+History for XSLoader
+
+0.04 - 2005.09.25
+    - [CODE] use strict;
+    - [TESTS] Rewrote t/XSLoader.t
+    - [DOC] Updated documentation: pod formatting, diagnostics & bugs sections
+    - [DIST] Bumped up the version.
+
 0.03_01  Mon Dec  6 19:28:57 EST 2004
     - Incrementing version as several versions called themselves 0.03.
 
