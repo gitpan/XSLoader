@@ -5,3 +5,7 @@ README
 Changes
 XSLoader_pm.PL
 t/XSLoader.t
+t/distchk.t
+t/podcover.t
+t/pod.t
+t/portfs.t

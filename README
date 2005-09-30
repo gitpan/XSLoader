@@ -24,7 +24,7 @@ INSTALLATION
         $ make install
 
     To install the extension in a private directory, you can use the PREFIX 
-    option when creating Makefile.PL.
+    option when executing Makefile.PL.
 
     This release of XSLoader has been tested by the author on the following 
     systems: 
@@ -37,8 +37,6 @@ INSTALLATION
       - Perl 5.6.0 darwin (vendor build)
       - Perl 5.6.2 darwin (custom build)
       - Perl 5.8.6 cygwin (vendor build)
-
-    and confirmed to work by Steve Peters on OpenBSD, Cygwin and ActivePerl. 
 
     See also the corresponding CPAN Testers page:
         http://testers.cpan.org/show/XSLoader.html

@@ -1,5 +1,11 @@
 History for XSLoader
 
+0.05 - 2005.09.29
+    - [CODE] Small optimisation for calling bootstrap_inherit() by Michael Schwern.
+    - [DIST] Got rid of lib/ directory for easier integration with CORE.
+    - [TESTS] Ported t/XSLoader.t to Test::More
+    - [TESTS] Added t/distchk.t, t/pod.t, t/podcover.t, t/portfs.t
+
 0.04 - 2005.09.25
     - [CODE] use strict;
     - [TESTS] Rewrote t/XSLoader.t

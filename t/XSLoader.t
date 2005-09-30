@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl -wT
 
 BEGIN {
     if( $ENV{PERL_CORE} ) {
@@ -9,50 +9,43 @@ BEGIN {
 
 use strict;
 use Config;
-use Test;
+use Test::More;
 my %modules;
 BEGIN {
     %modules = (
       # ModuleName  => q|code to check that it was loaded|, 
-       'Cwd'        => q| ::ok( ref Cwd->can('fastcwd'),'CODE' ) |,         # 5.7 ?
-       'File::Glob' => q| ::ok( ref File::Glob->can('doglob'),'CODE' ) |,   # 5.6
-       'SDBM_File'  => q| ::ok( ref SDBM_File->can('TIEHASH'), 'CODE' ) |,  # 5.0
-       'Socket'     => q| ::ok( ref Socket->can('inet_aton'),'CODE' ) |,    # 5.0
-       'Time::HiRes'=> q| ::ok( ref Time::HiRes->can('usleep'),'CODE' ) |,  # 5.7.3
+       'Cwd'        => q| ::is( ref Cwd->can('fastcwd'),'CODE' ) |,         # 5.7 ?
+       'File::Glob' => q| ::is( ref File::Glob->can('doglob'),'CODE' ) |,   # 5.6
+       'SDBM_File'  => q| ::is( ref SDBM_File->can('TIEHASH'), 'CODE' ) |,  # 5.0
+       'Socket'     => q| ::is( ref Socket->can('inet_aton'),'CODE' ) |,    # 5.0
+       'Time::HiRes'=> q| ::is( ref Time::HiRes->can('usleep'),'CODE' ) |,  # 5.7.3
     );
-    plan tests => keys(%modules) + 3
+    plan tests => keys(%modules) * 2 + 3
 }
+
 
 BEGIN {
-    print "# - use XSLoader:\n";
-    eval 'use XSLoader';
-    if($@) {
-        ok($@, '');
-        exit 1;
-    }
-    ok(1);
+    use_ok( 'XSLoader' );
 }
 
-print "# - XSLoader->can('load'):\n";
-ok( ref XSLoader->can('load') );
+# Check functions
+can_ok( 'XSLoader' => 'load' );
+#can_ok( 'XSLoader' => 'bootstrap_inherit' );  # doesn't work
 
 # Check error messages
-print "# - calling XSLoader::load() with no argument:\n";
-eval { XSLoader::load(); };
-ok( $@ =~ /^XSLoader::load\('Your::Module', \$Your::Module::VERSION\)/ );
+eval { XSLoader::load() };
+like( $@, '/^XSLoader::load\(\'Your::Module\', \$Your::Module::VERSION\)/', 
+        "calling XSLoader::load() with no argument" );
 
 # Now try to load well known XS modules
 my $extensions = $Config{'extensions'};
 $extensions =~ s|/|::|g;
 
 for my $module (sort keys %modules) {
-    if($extensions !~ /\b$module\b/) {
-        skip("$module not available", 1);
-        next
+    SKIP: {
+        skip "$module not available", 2 if $extensions !~ /\b$module\b/;
+        eval qq| package $module; XSLoader::load('$module'); | . $modules{$module};
+        is( $@, '',  "XSLoader::load($module)");
     }
-    print "# - trying to load $module\:\n";
-    my $chkcode = qq| package $module; XSLoader::load('$module'); | . $modules{$module};
-    eval $chkcode;
-    ok(0) if $@;
 }
 

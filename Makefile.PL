@@ -32,10 +32,10 @@ WriteMakefile(
     VERSION_FROM    => 'XSLoader_pm.PL',
     ABSTRACT_FROM   => 'XSLoader_pm.PL',
     INSTALLDIRS     => 'perl',
-    PL_FILES        => { 'XSLoader_pm.PL'  => 'lib/XSLoader.pm' },
-    PM              => { 'lib/XSLoader.pm' => '$(INST_LIBDIR)/XSLoader.pm' },
+    PL_FILES        => { 'XSLoader_pm.PL'  => 'XSLoader.pm' },
+    PM              => { 'XSLoader.pm' => '$(INST_LIBDIR)/XSLoader.pm' },
     PREREQ_PM       => {
-        'Test' => 0,
+        'Test::More' => 0,
     },
     dist            => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean           => { FILES => 'XSLoader-*' },

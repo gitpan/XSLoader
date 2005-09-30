@@ -8,14 +8,14 @@ sub to_string {
     return "'$value'";
 }
 
-1 while unlink "lib/XSLoader.pm";
-open OUT, ">lib/XSLoader.pm" or die $!;
+1 while unlink "XSLoader.pm";
+open OUT, ">XSLoader.pm" or die $!;
 print OUT <<'EOT';
 # Generated from XSLoader.pm.PL (resolved %Config::Config value)
 
 package XSLoader;
 
-$VERSION = "0.04";
+$VERSION = "0.05";
 
 #use strict;
 
@@ -122,12 +122,13 @@ print OUT <<'EOT';
     return &$xs(@_);
 
   retry:
-    goto &XSLoader::bootstrap_inherit;
+    my $bootstrap_inherit = DynaLoader->can('bootstrap_inherit') || 
+                            XSLoader->can('bootstrap_inherit');
+    goto &$bootstrap_inherit;
 }
 
 # Versions of DynaLoader prior to 5.6.0 don't have this function.
 sub bootstrap_inherit {
-    no strict 'refs';
     package DynaLoader;
 
     my $module = $_[0];
@@ -149,7 +150,7 @@ XSLoader - Dynamically load C libraries into Perl code
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =head1 SYNOPSIS
 
