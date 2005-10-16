@@ -13,7 +13,7 @@ use Test::More;
 my %modules;
 BEGIN {
     %modules = (
-      # ModuleName  => q|code to check that it was loaded|, 
+      # ModuleName  => q|code to check that it was loaded|,
        'Cwd'        => q| ::is( ref Cwd->can('fastcwd'),'CODE' ) |,         # 5.7 ?
        'File::Glob' => q| ::is( ref File::Glob->can('doglob'),'CODE' ) |,   # 5.6
        'SDBM_File'  => q| ::is( ref SDBM_File->can('TIEHASH'), 'CODE' ) |,  # 5.0
@@ -34,7 +34,7 @@ can_ok( 'XSLoader' => 'load' );
 
 # Check error messages
 eval { XSLoader::load() };
-like( $@, '/^XSLoader::load\(\'Your::Module\', \$Your::Module::VERSION\)/', 
+like( $@, '/^XSLoader::load\(\'Your::Module\', \$Your::Module::VERSION\)/',
         "calling XSLoader::load() with no argument" );
 
 # Now try to load well known XS modules

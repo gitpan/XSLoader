@@ -1,16 +1,3 @@
-use strict;
-use Config;
-
-sub to_string {
-    my ($value) = @_;
-    $value =~ s/\\/\\\\/g;
-    $value =~ s/'/\\'/g;
-    return "'$value'";
-}
-
-1 while unlink "XSLoader.pm";
-open OUT, ">XSLoader.pm" or die $!;
-print OUT <<'EOT';
 # Generated from XSLoader.pm.PL (resolved %Config::Config value)
 
 package XSLoader;
@@ -22,11 +9,7 @@ $VERSION = "0.06";
 # enable debug/trace messages from DynaLoader perl code
 # $dl_debug = $ENV{PERL_DL_DEBUG} || 0 unless defined $dl_debug;
 
-EOT
-
-print OUT '  my $dl_dlext = ', to_string($Config::Config{'dlext'}), ";\n" ;
-
-print OUT <<'EOT';
+  my $dl_dlext = 'so';
 
 package DynaLoader;
 
@@ -52,17 +35,6 @@ sub load {
     my @modparts = split(/::/,$module);
     my $modfname = $modparts[-1];
 
-EOT
-
-print OUT <<'EOT' if defined &DynaLoader::mod2fname;
-    # Some systems have restrictions on files names for DLL's etc.
-    # mod2fname returns appropriate file base name (typically truncated)
-    # It may also edit @modparts if required.
-    $modfname = &mod2fname(\@modparts) if defined &mod2fname;
-
-EOT
-
-print OUT <<'EOT';
     my $modpname = join('/',@modparts);
     my $modlibname = (caller())[1];
     my $c = @modparts;
@@ -382,6 +354,3 @@ This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-EOT
-
-close OUT or die $!;

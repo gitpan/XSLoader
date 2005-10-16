@@ -41,6 +41,8 @@ WriteMakefile(
     clean           => { FILES => 'XSLoader-*' },
 );
 
+# Unlink the .pm file included with the distribution
+1 while unlink "XSLoader.pm";
 
 {
     package MY;

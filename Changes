@@ -1,5 +1,10 @@
 History for XSLoader
 
+0.06 - 2005.10.16
+    - [DOC] Merged bleadperl@25666: documentation typos.
+    - [DIST] Now includes a transient XSLoader.pm for PAUSE. Thanks to Andreas
+      Koening for the explanation.
+
 0.05 - 2005.09.29
     - [CODE] Small optimisation for calling bootstrap_inherit() by Michael Schwern.
     - [DIST] Got rid of lib/ directory for easier integration with CORE.
