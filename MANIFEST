@@ -5,6 +5,8 @@ README
 Changes
 XSLoader.pm
 XSLoader_pm.PL
+eg/net-pcap.pl
+eg/posix.pl
 t/XSLoader.t
 t/podcover.t
 t/pod.t

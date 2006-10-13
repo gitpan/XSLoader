@@ -29,13 +29,14 @@ mkdir 'lib', 0755;
 
 WriteMakefile(
     NAME            => $PACKAGE,
+    LICENSE         => 'perl',
     VERSION_FROM    => 'XSLoader_pm.PL',
     ABSTRACT_FROM   => 'XSLoader_pm.PL',
     INSTALLDIRS     => 'perl',
     PL_FILES        => { 'XSLoader_pm.PL'  => 'XSLoader.pm' },
     PM              => { 'XSLoader.pm' => '$(INST_LIBDIR)/XSLoader.pm' },
     PREREQ_PM       => {
-        'Test::More' => 0,
+        'Test::More' => '0.62',
     },
     dist            => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean           => { FILES => 'XSLoader-*' },

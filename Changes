@@ -1,31 +1,39 @@
 History for XSLoader
 
-0.06 - 2005.10.16
+0.07 - 2006.10.13 - SAPER
+    - [TESTS] Removed cargo-cult BEGIN blocs.
+    - [TESTS] Detect if Test::More is available.
+    - [TESTS] Reworked the way modules are tested to improve the TAP output.
+    - [TESTS] Added more tests, mainly error messages checking.
+    - [DOC] Small Pod changes.
+    - [DIST] Added examples.
+
+0.06 - 2005.10.16 - SAPER
     - [DOC] Merged bleadperl@25666: documentation typos.
     - [DIST] Now includes a transient XSLoader.pm for PAUSE. Thanks to Andreas
       Koening for the explanation.
 
-0.05 - 2005.09.29
+0.05 - 2005.09.29 - SAPER
     - [CODE] Small optimisation for calling bootstrap_inherit() by Michael Schwern.
     - [DIST] Got rid of lib/ directory for easier integration with CORE.
     - [TESTS] Ported t/XSLoader.t to Test::More
     - [TESTS] Added t/distchk.t, t/pod.t, t/podcover.t, t/portfs.t
 
-0.04 - 2005.09.25
+0.04 - 2005.09.25 - SAPER
     - [CODE] use strict;
     - [TESTS] Rewrote t/XSLoader.t
     - [DOC] Updated documentation: pod formatting, diagnostics & bugs sections
     - [DIST] Bumped up the version.
 
-0.03_01  Mon Dec  6 19:28:57 EST 2004
+0.03_01  Mon Dec  6 19:28:57 EST 2004 - MSCHWERN
     - Incrementing version as several versions called themselves 0.03.
 
-0.03  *UNRELEASED*
+0.03  *UNRELEASED* - MSCHWERN
     - Clean up tests for core [bleadperl@20945, 20952, 20961]
     - Make XSLoader update @DynaLoader::dl_shared_objects [bleadperl@22816]
     - Minor doc style nits [bleadperl@21060]
 
-0.02  Fri Aug 29 21:59:33 PDT 2003
+0.02  Fri Aug 29 21:59:33 PDT 2003 - MSCHWERN
     * Adapted from bleadperl@20940
     * Added basic tests
     * Backported to 5.004_05

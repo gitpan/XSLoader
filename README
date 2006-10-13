@@ -24,16 +24,21 @@ INSTALLATION
     option when executing Makefile.PL.
 
     This release of XSLoader has been tested by the author on the following 
-    systems: 
+    Perl and system versions but is likely to run on many more: 
 
       - Perl 5.4.5 i686-linux (custom build)
       - Perl 5.5.3 i686-linux (custom build)
       - Perl 5.6.2 i686-linux (custom build)
       - Perl 5.8.5 i386-linux-thread-multi (vendor build)
-      - Perl blead@25763 i686-linux (custom build)
+      - Perl 5.8.8 i686-linux (custom build)
+      - Perl 5.4.5 x86_64-linux (custom build)
+      - Perl 5.6.2 x86_64-linux (custom build)
+      - Perl 5.8.7 x86_64-linux (custom build)
+      - Perl 5.9.4-blead@28397 i686-linux (custom build)
       - Perl 5.6.0 darwin (vendor build)
-      - Perl 5.6.2 darwin (custom build)
-      - Perl 5.8.6 cygwin (vendor build)
+      - Perl 5.8.6 darwin-thread-multi-2level (vendor build)
+      - Perl 5.8.8 i386-freebsd-64int (custom build/dor)
+      - Perl 5.9.5-blead@28998 built for i386-freebsd-64int (custom build)
 
     See also the corresponding CPAN Testers page:
         http://testers.cpan.org/show/XSLoader.html
