@@ -15,7 +15,7 @@ print OUT <<'EOT';
 
 package XSLoader;
 
-$VERSION = "0.07";
+$VERSION = "0.08";
 
 #use strict;
 
@@ -62,6 +62,13 @@ print OUT <<'EOT' if defined &DynaLoader::mod2fname;
 
 EOT
 
+print OUT <<'EOT' if $^O eq 'os2';
+
+    # os2 static build can dynaload, but cannot dynaload Perl modules...
+    die 'Dynaloaded Perl modules are not available in this build of Perl' if $OS2::is_static;
+
+EOT
+
 print OUT <<'EOT';
     my $modpname = join('/',@modparts);
     my $modlibname = (caller())[1];
@@ -82,12 +89,17 @@ print OUT <<'EOT';
 
     my $boot_symbol_ref;
 
+EOT
+
     if ($^O eq 'darwin') {
+print OUT <<'EOT';
         if ($boot_symbol_ref = dl_find_symbol(0, $bootname)) {
             goto boot; #extension library has already been loaded, e.g. darwin
         }
+EOT
     }
 
+print OUT <<'EOT';
     # Many dynamic extension loading problems will appear to come from
     # this section of code: XYZ failed at line 123 of DynaLoader.pm.
     # Often these errors are actually occurring in the initialisation
@@ -150,7 +162,7 @@ XSLoader - Dynamically load C libraries into Perl code
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =head1 SYNOPSIS
 

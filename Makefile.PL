@@ -34,7 +34,7 @@ WriteMakefile(
     ABSTRACT_FROM   => 'XSLoader_pm.PL',
     INSTALLDIRS     => 'perl',
     PL_FILES        => { 'XSLoader_pm.PL'  => 'XSLoader.pm' },
-    PM              => { 'XSLoader.pm' => '$(INST_LIBDIR)/XSLoader.pm' },
+    PM              => { 'XSLoader.pm' => '$(INST_ARCHLIB)/XSLoader.pm' },
     PREREQ_PM       => {
         'Test::More' => '0.62',
     },

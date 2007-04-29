@@ -2,7 +2,7 @@
 
 package XSLoader;
 
-$VERSION = "0.07";
+$VERSION = "0.08";
 
 #use strict;
 
@@ -53,12 +53,6 @@ sub load {
     @DynaLoader::dl_require_symbols = ($bootname);
 
     my $boot_symbol_ref;
-
-    if ($^O eq 'darwin') {
-        if ($boot_symbol_ref = dl_find_symbol(0, $bootname)) {
-            goto boot; #extension library has already been loaded, e.g. darwin
-        }
-    }
 
     # Many dynamic extension loading problems will appear to come from
     # this section of code: XYZ failed at line 123 of DynaLoader.pm.
@@ -122,7 +116,7 @@ XSLoader - Dynamically load C libraries into Perl code
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =head1 SYNOPSIS
 

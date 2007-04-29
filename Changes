@@ -1,5 +1,15 @@
 History for XSLoader
 
+0.08 - 2007.04.29 - SAPER
+    - [BUGFIX] Fixed installation target.
+    - [CODE] Merged bleadperl@29580: OS/2-specific change by Ilya Zakharevich: 
+      static build can load generic DLLs, but cannot load Perl extensions with 
+      DLLs.
+    - [CODE] Merged bleadperl@29188: Factor out $^O eq 'darwin' from XSLoader.pm
+    - [TESTS] Fixed t/podcover.t
+    - [TESTS] Merged bleadperl@30852: Allow any *DBM_File to work by Jerry D. Hedden.
+    - [TESTS] Merged bleadperl@31005: Compatibility with version.pm
+
 0.07 - 2006.10.13 - SAPER
     - [TESTS] Removed cargo-cult BEGIN blocs.
     - [TESTS] Detect if Test::More is available.

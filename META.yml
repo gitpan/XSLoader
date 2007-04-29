@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                XSLoader
-version:             0.07
+version:             0.08
 abstract:            Dynamically load C libraries into Perl code
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.30_04
