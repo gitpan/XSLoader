@@ -1,5 +1,14 @@
 History for XSLoader
 
+0.09 - 2008.09.21 - SAPER
+    - [CODE] Execute bootstrap files if present, thanks to Vadim Konovalov.
+    - [CODE] Small optimisation: avoid to calculate "${module}::bootstrap"
+      more than needed, thanks to Vadim Konovalov.
+    - [TESTS] Normalised tests headings.
+    - [TESTS] t/pod.t now also uses Pod::Checker.
+    - [TESTS] Added a test in t/XSLoader.t to avoid warnings from Perl 5.10
+    - [DOC] The copyright section is also the license.
+
 0.08 - 2007.04.29 - SAPER
     - [BUGFIX] Fixed installation target.
     - [CODE] Merged bleadperl@29580: OS/2-specific change by Ilya Zakharevich: 

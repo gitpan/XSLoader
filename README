@@ -48,7 +48,16 @@ AUTHORS
 
     Ilya Zakharevich originally extracted XSLoader from DynaLoader.
 
+    CPAN version originally created by Michael G Schwern <schwern@pobox.com>
+
+    This program is maintained by the Perl 5 Porters.
     CPAN version is currently maintained by Sébastien Aperghis-Tramoni
     <sebastien@aperghis.net>
 
-    Previous maintainer was Michael G. Schwern <schwern@pobox.com>
+
+COPYRIGHT AND LICENCE
+
+    Copyright (C) 1999 Ilya Zakharevich.
+
+    This program is free software; you can redistribute it and/or modify
+    it under the same terms as Perl itself.

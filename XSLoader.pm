@@ -2,14 +2,14 @@
 
 package XSLoader;
 
-$VERSION = "0.08";
+$VERSION = "0.09";
 
 #use strict;
 
 # enable debug/trace messages from DynaLoader perl code
 # $dl_debug = $ENV{PERL_DL_DEBUG} || 0 unless defined $dl_debug;
 
-  my $dl_dlext = 'so';
+  my $dl_dlext = 'bundle';
 
 package DynaLoader;
 
@@ -27,8 +27,8 @@ sub load {
     my($module) = $_[0];
 
     # work with static linking too
-    my $b = "$module\::bootstrap";
-    goto &$b if defined &$b;
+    my $boots = "$module\::bootstrap";
+    goto &$boots if defined &$boots;
 
     goto retry unless $module and defined &dl_load_file;
 
@@ -46,6 +46,12 @@ sub load {
     my $bs = $file;
     $bs =~ s/(\.\w+)?(;\d*)?$/\.bs/; # look for .bs 'beside' the library
 
+    if (-s $bs) { # only read file if it's not empty
+        print STDERR "BS: $bs ($^O, $dlsrc)\n" if $dl_debug;
+        eval { do $bs; };
+        warn "$bs: $@\n" if $@;
+    }
+
     goto retry if not -f $file or -s $bs;
 
     my $bootname = "boot_$module";
@@ -54,6 +60,9 @@ sub load {
 
     my $boot_symbol_ref;
 
+        if ($boot_symbol_ref = dl_find_symbol(0, $bootname)) {
+            goto boot; #extension library has already been loaded, e.g. darwin
+        }
     # Many dynamic extension loading problems will appear to come from
     # this section of code: XYZ failed at line 123 of DynaLoader.pm.
     # Often these errors are actually occurring in the initialisation
@@ -81,7 +90,7 @@ sub load {
     push(@DynaLoader::dl_modules, $module); # record loaded module
 
   boot:
-    my $xs = dl_install_xsub("${module}::bootstrap", $boot_symbol_ref, $file);
+    my $xs = dl_install_xsub($boots, $boot_symbol_ref, $file);
 
     # See comment block above
     push(@DynaLoader::dl_shared_objects, $file); # record files loaded
@@ -116,7 +125,7 @@ XSLoader - Dynamically load C libraries into Perl code
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =head1 SYNOPSIS
 
@@ -342,7 +351,9 @@ E<lt>sebastien@aperghis.netE<gt>.
 Previous maintainer was Michael G Schwern <schwern@pobox.com>.
 
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT & LICENSE
+
+Copyright (C) 1990-2007 by Larry Wall and others.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
