@@ -30,6 +30,7 @@ mkdir 'lib', 0755;
 WriteMakefile(
     NAME            => $PACKAGE,
     LICENSE         => 'perl',
+    AUTHOR          => 'Sebastien Aperghis-Tramoni <sebastien@aperghis.net>',
     VERSION_FROM    => 'XSLoader_pm.PL',
     ABSTRACT_FROM   => 'XSLoader_pm.PL',
     INSTALLDIRS     => 'perl',

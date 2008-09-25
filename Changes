@@ -1,5 +1,12 @@
 History for XSLoader
 
+0.10 - 2008.09.23 - SAPER
+    - [CODE] Commented a debug statement which seems to confuse some Perl
+      builts with -DDEBUGGING (Rafael Garcia-Suarez).
+    - [TESTS] RT-Perl#59208: Adjusted t/XSLoader.t for builds without
+      dynamic loading (Andy Dougherty).
+    - [TESTS] RT-CPAN#39520: Fixed t/podcover.t (Jerry D. Hedden).
+
 0.09 - 2008.09.21 - SAPER
     - [CODE] Execute bootstrap files if present, thanks to Vadim Konovalov.
     - [CODE] Small optimisation: avoid to calculate "${module}::bootstrap"

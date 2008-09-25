@@ -1,5 +1,4 @@
 MANIFEST
-META.yml
 Makefile.PL
 README
 Changes
@@ -11,3 +10,4 @@ t/XSLoader.t
 t/podcover.t
 t/pod.t
 t/portfs.t
+META.yml
