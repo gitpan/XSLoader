@@ -25,7 +25,7 @@ CHANGE_WARN
 }
 
 # In case the empty lib/ directory was not created.
-mkdir 'lib', 0755;
+mkdir 'lib', 0755 unless $ENV{PERL_CORE};
 
 WriteMakefile(
     NAME            => $PACKAGE,
@@ -40,7 +40,7 @@ WriteMakefile(
         'Test::More' => '0.62',
     },
     dist            => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean           => { FILES => 'XSLoader-*' },
+    clean           => { FILES => 'XSLoader-* XSLoader.pm' },
 );
 
 # Unlink the .pm file included with the distribution

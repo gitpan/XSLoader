@@ -5,10 +5,10 @@ NAME
 
 DESCRIPTION
 
-    This module defines a standard *simplified* interface to the dynamic
-    linking mechanisms available on many platforms. Its primary purpose is
-    to implement cheap automatic dynamic loading of Perl modules.  For a 
-    more complicated interface, see DynaLoader. 
+    This module defines a standard simplified interface to the dynamic
+    linking mechanisms available on many platforms. Its primary purpose
+    is to implement cheap automatic dynamic loading of Perl modules.
+    For a more complicated interface, see DynaLoader. 
 
 
 INSTALLATION
@@ -23,26 +23,6 @@ INSTALLATION
     To install the extension in a private directory, you can use the PREFIX 
     option when executing Makefile.PL.
 
-    This release of XSLoader has been tested by the author on the following 
-    Perl and system versions but is likely to run on many more: 
-
-      - Perl 5.4.5 i686-linux (custom build)
-      - Perl 5.5.3 i686-linux (custom build)
-      - Perl 5.6.2 i686-linux (custom build)
-      - Perl 5.8.5 i386-linux-thread-multi (vendor build)
-      - Perl 5.8.8 i686-linux (custom build)
-      - Perl 5.4.5 x86_64-linux (custom build)
-      - Perl 5.6.2 x86_64-linux (custom build)
-      - Perl 5.8.7 x86_64-linux (custom build)
-      - Perl 5.9.4-blead@28397 i686-linux (custom build)
-      - Perl 5.6.0 darwin (vendor build)
-      - Perl 5.8.6 darwin-thread-multi-2level (vendor build)
-      - Perl 5.8.8 i386-freebsd-64int (custom build/dor)
-      - Perl 5.9.5-blead@28998 built for i386-freebsd-64int (custom build)
-
-    See also the corresponding CPAN Testers page:
-        http://testers.cpan.org/show/XSLoader.html
-
 
 AUTHORS
 
@@ -51,13 +31,13 @@ AUTHORS
     CPAN version originally created by Michael G Schwern <schwern@pobox.com>
 
     This program is maintained by the Perl 5 Porters.
-    CPAN version is currently maintained by Sébastien Aperghis-Tramoni
+    CPAN version is currently maintained by Sebastien Aperghis-Tramoni
     <sebastien@aperghis.net>
 
 
 COPYRIGHT AND LICENCE
 
-    Copyright (C) 1999 Ilya Zakharevich.
+    Copyright (C) 1990-2011 by Larry Wall and others.
 
     This program is free software; you can redistribute it and/or modify
     it under the same terms as Perl itself.

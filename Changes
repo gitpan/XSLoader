@@ -1,5 +1,18 @@
 History for XSLoader
 
+0.14 - 2011.04.16 - SAPER #PerlQA2011
+    - [CODE] Updated from bleadperl:
+       - XSLoader::load() with no arguments can use caller to find
+         a default package (Nicholas Clark).
+       - Avoid defining a full XSLoader::bootstrap_inherit post 5.6,
+         as it's not needed (Nicholas Clark).
+       - Small optimisation: for the generated XSLoader.pm, avoid a
+         runtime lexical which is constant (Nicholas Clark).
+    - [TESTS] Updated from bleadperl, solving RT-CPAN #54132, #61332.
+    - [TESTS] Fixed tests for old Perls.
+    - [TESTS] Added t/00-load.t and t/01-api.t, to provide basic tests
+      when the main ones are skipped.
+
 0.10 - 2008.09.23 - SAPER
     - [CODE] Commented a debug statement which seems to confuse some Perl
       builts with -DDEBUGGING (Rafael Garcia-Suarez).

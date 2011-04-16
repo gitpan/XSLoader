@@ -11,6 +11,8 @@ all_pod_files_ok();
 if ($ENV{AUTHOR_TESTS}) {
     if (eval "use Pod::Checker; 1") {
         my $checker = Pod::Checker->new(-warnings => 1);
-        $checker->parse_from_file($_, \*STDERR) for all_pod_files();
+        for my $pod (all_pod_files()) {
+            $checker->parse_from_file($pod, \*STDERR)
+        }
     }
 }
