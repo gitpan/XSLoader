@@ -48,16 +48,24 @@ my @cases = (
 
 for my $case (@cases) {
     my ($should_load, $codestr) = @$case;
-    is(eval $codestr, undef, "eval '$codestr' should die");
+    my $diag;
 
+    # determine the expected diagnostic
     if ($Config{usedl}) {
-        like( $@, qr/^Can't locate loadable object for module $should_load in \@INC/,
-              "calling XSLoader::load() under a package with no XS part" );
+        if ($case->[0] eq "Thwack" and ($] == 5.008004 or $] == 5.008005)) {
+            # these versions had bugs with chained C<goto &>
+            $diag = "Usage: DynaLoader::bootstrap\\(module\\)";
+        } else {
+            # normal diagnostic for a perl with dynamic loading
+            $diag = "Can't locate loadable object for module $should_load in \@INC";
+        }
+    } else {
+        # a perl with no dynamic loading
+        $diag = "Can't load module $should_load, dynamic loading not available in this perl.";
     }
-    else {
-        like( $@, qr/^Can't load module $should_load, dynamic loading not available in this perl./,
-              "calling XSLoader::load() under a package with no XS part" );
-    }
+
+    is(eval $codestr, undef, "eval '$codestr' should die");
+    like($@, qr/^$diag/, "calling XSLoader::load() under a package with no XS part");
 }
 
 # Now try to load well known XS modules

@@ -1,5 +1,11 @@
 History for XSLoader
 
+0.15 - 2011.04.17 - SAPER #PerlQA2011
+    - [DIST] CPAN-RT#54456: Set INSTALLDIRS to "site" when installed on
+      Perl 5.11+ (thanks to Todd Rinaldo).
+    - [DOC] Document a known bug under Perl 5.8.4 and 5.8.5.
+    - [TESTS] Fixed tests to pass under Perl 5.8.4 and 5.8.5.
+
 0.14 - 2011.04.16 - SAPER #PerlQA2011
     - [CODE] Updated from bleadperl:
        - XSLoader::load() with no arguments can use caller to find

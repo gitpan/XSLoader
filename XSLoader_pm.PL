@@ -8,7 +8,7 @@ print OUT <<'EOT';
 
 package XSLoader;
 
-$VERSION = "0.14";
+$VERSION = "0.15";
 
 #use strict;
 
@@ -181,7 +181,7 @@ XSLoader - Dynamically load C libraries into Perl code
 
 =head1 VERSION
 
-Version 0.13
+Version 0.15
 
 =head1 SYNOPSIS
 
@@ -390,6 +390,12 @@ In particular, this is applicable to the structure of C<@INC> used for testing
 not-yet-installed extensions.  This means that running uninstalled extensions
 may have much more overhead than running the same extensions after
 C<make install>.
+
+
+=head1 KNOWN BUGS
+
+The new simpler way to call C<XSLoader::load()> with no arguments at all
+does not work on Perl 5.8.4 and 5.8.5.
 
 
 =head1 BUGS
