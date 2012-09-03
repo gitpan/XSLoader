@@ -2,12 +2,9 @@
 
 package XSLoader;
 
-$VERSION = "0.15";
+$VERSION = "0.16";
 
 #use strict;
-
-# enable debug/trace messages from DynaLoader perl code
-# $dl_debug = $ENV{PERL_DL_DEBUG} || 0 unless defined $dl_debug;
 
 package DynaLoader;
 
@@ -114,7 +111,7 @@ XSLoader - Dynamically load C libraries into Perl code
 
 =head1 VERSION
 
-Version 0.15
+Version 0.16
 
 =head1 SYNOPSIS
 
@@ -170,7 +167,7 @@ If no C<$VERSION> was specified on the C<bootstrap> line, the last line becomes
 
     XSLoader::load 'YourPackage';
 
-If the call to C<load> is from the YourPackage, then that can be further
+If the call to C<load> is from C<YourPackage>, then that can be further
 simplified to
 
     XSLoader::load();
@@ -202,7 +199,7 @@ C<use XSLoader> by C<require>, so the compiler does not know that a function
 C<XSLoader::load()> is present.
 
 This boilerplate uses the low-overhead C<XSLoader> if present; if used with
-an antic Perl which has no C<XSLoader>, it falls back to using C<DynaLoader>.
+an antique Perl which has no C<XSLoader>, it falls back to using C<DynaLoader>.
 
 =head1 Order of initialization: early load()
 

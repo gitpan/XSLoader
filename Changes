@@ -1,5 +1,12 @@
 History for XSLoader
 
+0.16 - 2012.09.03 - SAPER
+    - [CODE] Synced from bleadperl.
+    - [DOC] CPAN-RT #77294: Fixed some spelling and grammer errors.
+    - [TESTS] CPAN-RT #77557: Tests started to fail with Perl 5.15.5
+    - [DIST] Perl-RT #114050: Added meta-information in Makefile.PL to
+      reflect that the module is maintained by P5P.
+
 0.15 - 2011.04.17 - SAPER #PerlQA2011
     - [DIST] CPAN-RT#54456: Set INSTALLDIRS to "site" when installed on
       Perl 5.11+ (thanks to Todd Rinaldo).
